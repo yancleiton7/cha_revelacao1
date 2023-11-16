@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <meta property="og:title" content="Temos uma pergunta a te fazer" />
+    <meta property="og:description" content="Venha! Entre, dê uma olhada e se divirta" />
+    <meta property="og:image" content="imagens/tela.png" />  
+   
+    <script src="js/index.js"></script>
+    <title>Chá Revelação</title>
+</head>
+<body>
+
+    <audio id="adventure" loop >
+        <source src="audio/adventure.mp3" type="audio/mpeg">
+      </audio>
+    
+    <audio id="arcade" autoplay>
+        <source src="audio/arcade.mp3" type="audio/mpeg">
+        
+      </audio>
+    
+    <button class="floating-button" onclick="desativarMusica()"></button>
+
+    <section class="game" id="main" >
+            <div class="logo"></div>
+            <div class="start" onclick="muda_pagina('main', 'formulario'); play_audio('adventure')" ></div>
+    </section>
+
+    <section id="formulario" class="formulario" style="display: none;">
+            
+            <form action="">
+            <div class="form">
+                <div class="logo"></div>    
+                <div class="entrada">
+                    <p> digite seu Nome ou apelido: </p>
+                    <input type="text" id="nome" required placeholder="nome">
+                    <p></p>
+                    
+                    <div>
+                        <div class="genero" id="feminino" onclick="capturar('nome', 'nome_convidado', 'nome_convidado1', 'formulario', 'historia'); "></div>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+        
+    </section>
+
+    <section class="historia"  id="historia" style="display: none;">
+        
+        <div class="person">
+            <div class="iasmin" id="iasmin"></div>
+            <div class="yan" id="yan" style="display: none;"></div>
+        </div>
+        <div class="box-historia">
+                <p id="vazio"></p>
+                <p id="prologo" style="display: none;">olá, tudo bem? Eu sou Thais e hoje vou te contar uma história...</p>
+                <p id="p1" style="display: none;" >Em 2016 a história da minha família começou. Eu e Tiere iniciamos uma jornada que já conta 7 anos... </p>
+                <p id="p2" style="display: none;">Nesse tempo desfrutamos de momentos incríveis e também de muitas lutas. Mas até aqui o Senhor tem nos sustentado... </p>
+                <p id="p3" style="display: none;">Não só sustentado mas tem nos dado muitas alegrias e surpresas. Eu e Thais estamos vivendo coisas extraordinárias. E queremos dividir com você uma das que nos alegrou muito:</p>
+                <p id="p4" style="display: none;">seremos pais!!!</p>
+                <p id="p5" style="display: none;">Estamos muito animados com tudo isso e agora queremos descobrir uma coisa com você:</p>
+                <p id="p6" style="display: none; font-size:50px">é menino ou menina???</p>
+            
+        </div>
+        
+        <div class="pular" id="btn_pular" onclick="muda_texto()" >Continuar</div>
+
+
+    </section>
+
+    <section id="intro" class="abertura" style="display: none;">
+        <div class="box">
+            <img src="imagens/fotos/chicken.webp" class="icons" alt="">
+            <div class="intro">
+                <p>E aí, <span id="nome_convidado" style="color: #f595f2"></span>! Tudo bem?</p>
+                <p>Que bom ter você aqui com a gente.</p>
+                <p>E hoje queremos te fazer um convite especial. Que está na cartinha aqui em baixo.</p>
+                <p>Clique nela para abrí-la</p>
+            </div>
+            <div class="botoes">
+                <img src="imagens/fotos/envelope_fechado.png" alt="" class="carta" onclick="muda_pagina('intro', 'convite'),pause_audio('adventure'), play_audio('arcade')">
+            </div>
+        </div>
+    </section>
+
+    <section id="convite" class="convite" style="display: none;">
+                        
+        <div class="box">
+            <img src="imagens/fotos/cat.gif" class="life" alt="">
+            <div class="pergunta">
+                <p><span id="nome_convidado1"></span>,</p>
+                <p>Queremos te convidar para o chá revelação do nosso bebê!!</p>
+                <p>Diz, aí. Qual é o seu palpite?</p>
+            </div>
+            <div class="botoes">
+                <img src="imagens/butoes/maria.png" alt="" class="btn" onclick="muda_pagina('convite', 'final'), maria()" >
+                <img src="imagens/butoes/levi.png" alt="" class="btn" onclick="muda_pagina('convite', 'final'), levi()" >
+            </div>
+        </div>
+                
+    </section>
+
+    <section id="final" class="final" style="display: none;">
+                        
+        <div class="box">
+            <img src="imagens/fotos/interrogacao.gif" class="life" alt="">
+            <div class="agradecimento">
+                <p>Será que você acertou??</p>
+                <p>Veremos isso no [nome do local]</p>
+                <p>a grande revelação será feita no dia <p class="data">dd.mm.aaaa</p> às xxh</p>
+                
+                
+                <div  onclick="muda_pagina('final', 'detalhes')"><p class="seguir">saber mais</p></div>
+            </div>
+        </div>
+                
+    </section>
+
+
+    <section id="detalhes" class="detalhes" style="display: none;">
+                        
+        <div class="box">
+            
+            <div class="spoilers">
+                <div id="part1">
+                    <img src="imagens/fotos/mamadeira.gif" class="life" alt="">
+                    <p>Esse chá será um momento muito especial para nós. Juntos da nossos amigos e família iremos celebrar essa notícia maravilhosa. E descobrir juntos qual o sexo do bebê.</p>
+                    <div class="lista" onclick="muda_texto1()"><p>Continuar</p></div>
+                </div>
+                <div id="part2" style="display: none;">
+                    <img src="imagens/fotos/chicken.webp" class="life" alt="">
+                    <p>Será um momento especial e pedimos que, se possível, presenteie nosso bebê com uma fralda. Porque sabemos, ela/ele vai sujar muito kkk</p>
+                    <div class="lista" onclick="muda_texto1()"><p>Continuar</p></div>
+                </div>
+                <div id="part3" style="display: none;">
+                    <img src="imagens/fotos/cat.gif" class="life" alt="">
+                    <p>Sua presença será muito importante para a gente.</p> 
+                    <p>Se puder participar confirma clicando aqui em baixo.</p>
+                    
+                    <div class="lista" onclick="confirmar_presenca()"><p >confirme sua presença!</p></div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+</body>
+</html>
