@@ -110,7 +110,7 @@ Veremos em breve!
 Obrigado pelo convite!`);
     
     // URL para o WhatsApp Web
-const url = `https://web.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
+const url = `https://wa.me/${phoneNumber}?text=${message}`;
 
 
 // Abrir WhatsApp Web
